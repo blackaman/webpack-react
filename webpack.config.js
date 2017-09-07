@@ -2,12 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const debug = false;
+const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+const debug = true;
 const extractSass = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css"
+  filename: '[name].[contenthash].css'
 });
 
 const uglifyjs = new UglifyJsPlugin({
@@ -29,7 +29,7 @@ let plugin = [
     'process.env.NODE_ENV': JSON.stringify('dev')
   }),
   extractSass
-]
+];
 plugin = debug ? plugin : [...plugin, uglifyjs];
 
 module.exports = {
@@ -44,11 +44,11 @@ module.exports = {
         test: /\.scss$/,
         use: extractSass.extract({
           use: [{
-              loader: "css-loader"
+            loader: 'css-loader'
           }, {
-              loader: "sass-loader"
+            loader: 'sass-loader'
           }],
-          fallback: "style-loader"
+          fallback: 'style-loader'
         })
       },
       {
@@ -77,4 +77,4 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   plugins: [...plugin]
-}
+};

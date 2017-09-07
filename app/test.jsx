@@ -2,11 +2,10 @@ import React from 'react';
 
 const LogoArea = () => (
   <div>
-    <div className="logo-area">
+    <div id="logo-area">
        react
     </div>
-    <div >搭配成功oye! </div>
+    <div id="click">搭配成功oye! </div>
   </div>
 );
-
 export default LogoArea;
